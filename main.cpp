@@ -30,7 +30,7 @@ ss>>temp;
 ss>>temp;
 size_t pos =  temp.find("html?");
 if (pos!=std::string::npos)
-return temp.substr(1,pos+4);
+return temp.substr(1,pos+3);
 else return temp.substr(1);
 }
 
