@@ -98,7 +98,7 @@ void worker(int SlaveSocket)
 			sprintf(Buffer,templ,content.length(),content.c_str());
 			int result = send(SlaveSocket, Buffer,strlen(Buffer), MSG_NOSIGNAL);
 		} else{
-			int result = send(SlaveSocket, not_found,strlen(not_found), MSG_NOSIGNAL);
+			int result = send(SlaveSocket, not_found,57, MSG_NOSIGNAL);
 		}		
     	shutdown(SlaveSocket,SHUT_RDWR);
     	close(SlaveSocket);
