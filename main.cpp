@@ -34,15 +34,9 @@ return temp.substr(1,pos+4);
 else return temp.substr(1);
 }
 
-static const char* templ = "HTTP/1.0 200 OK\r\n"
-
-		           "Content-length: %d\r\n"
-
-		       	   "Connection: close\r\n"
-
-		       	   "Content-Type: text/html\r\n""\r\n""%s";
+static const char* templ = "HTTP/1.0 200 OK\r\n Content-length: %d\r\n Content-Type: text/html\r\n\r\n%s";
 				   
-static const char not_found[] = "HTTP/1.0 404 NOT FOUND\r\nContent-Type: text/html\r\n\r\n";				   
+static const char not_found[] = "HTTP/1.0 404 Not Found\r\n  Content-length: 13\r\n Content-Type: text/html\r\n\r\n404 NOT FOUND";				   
 
 char *get_ip_str(const struct sockaddr *sa, char *s, size_t maxlen)
 {
@@ -98,7 +92,7 @@ void worker(int SlaveSocket)
 			sprintf(Buffer,templ,content.length(),content.c_str());
 			int result = send(SlaveSocket, Buffer,strlen(Buffer), MSG_NOSIGNAL);
 		} else{
-			int result = send(SlaveSocket, not_found,57, MSG_NOSIGNAL);
+			int result = send(SlaveSocket, not_found,strlen(not_found), MSG_NOSIGNAL);
 		}		
     	shutdown(SlaveSocket,SHUT_RDWR);
     	close(SlaveSocket);
