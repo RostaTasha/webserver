@@ -28,9 +28,9 @@ std::stringstream ss(request);
 std::string temp;
 ss>>temp;
 ss>>temp;
-size_t pos =  temp.find("html?");
+size_t pos =  temp.find("?");
 if (pos!=std::string::npos)
-return temp.substr(1,pos+3);
+return temp.substr(1,pos-1);
 else return temp.substr(1);
 }
 
