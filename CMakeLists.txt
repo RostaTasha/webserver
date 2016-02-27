@@ -7,10 +7,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 										
 project(final)			# Название проекта
 
-set(SOURCE_EXE /home/box/final/main.cpp)		# Установка переменной со списком исходников для исполняемого файла
+set(SOURCE_EXE main.cpp)		# Установка переменной со списком исходников для исполняемого файла
 
-find_package (Threads)
 
 add_executable(final ${SOURCE_EXE})	# Создает исполняемый файл с именем final
 
-target_link_libraries(final ${CMAKE_THREAD_LIBS_INIT})		# Линковка программы с библиотекой
+target_link_libraries(final pthread)		# Линковка программы с библиотекой
